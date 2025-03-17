@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/desktop.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="desktop" />
+    <div class="desktop screen">
+      <div class="section1">
+        <header class="header">
+          <div class="logo"></div>
+        </header>
+        <div class="title">
+          <h1 class="text-1 applesdgothicneo-bold-eerie-black-32px">은퇴 계산기</h1>
+          <p class="text-2 applesdgothicneo-regular-normal-sonic-silver-16px">
+            당신의 은퇴금이 소진되는 시점을 기준으로 합니다
+          </p>
+        </div>
+      </div>
+      <div class="section2_3">
+        <div class="section2">
+          <div class="section2_age">
+            <div class="input_title_age">
+              <div class="line"></div>
+              <div class="text_label text_label-9 applesdgothicneo-bold-eerie-black-15px">기본 정보</div>
+            </div>
+            <div class="input input-2">
+              <article class="input-1 input-2">
+                <div class="input_tit">
+                  <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">현재 나이</div>
+                  <img class="tooltip" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox">
+                  <div class="input_con-8">
+                    <input type="number" id="input_ageCurrent-desktop" name="input_ageCurrent" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type">
+                      <div class="text applesdgothicneo-medium-eerie-black-16px">세</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="input-1 input-2">
+                <div class="input_tit">
+                  <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">은퇴 나이</div>
+                  <img class="tooltip" src="img/tooltip-145.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox">
+                  <div class="input_con-8">
+                    <input type="number" id="input_ageRetire-desktop" name="input_ageRetire" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type">
+                      <div class="text applesdgothicneo-medium-eerie-black-16px">세</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="input-1 input-2">
+                <div class="input_tit">
+                  <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">기대 수명</div>
+                  <img class="tooltip" src="img/tooltip-146.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox">
+                  <div class="input_con-8">
+                    <input type="number" id="input_ageLifespan-desktop" name="input_ageLifespan" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type">
+                      <div class="text applesdgothicneo-medium-eerie-black-16px">세</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="section2_money">
+            <div class="input_title_money">
+              <div class="line"></div>
+              <div class="text_label text_label-9 applesdgothicneo-bold-eerie-black-15px">재무 계획</div>
+            </div>
+            <div class="input_money_group">
+              <article class="input_money_saving">
+                <div class="input_money">
+                  <div class="input_tit">
+                    <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">월 저축 금액</div>
+                    <img class="tooltip" src="img/tooltip-144.svg" alt="tooltip" />
+                  </div>
+                  <div class="inputbox">
+                    <div class="input_con-8">
+                      <input type="number" id="input_saving-desktop" name="input_saving" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                      <div class="input_type">
+                        <div class="text applesdgothicneo-medium-eerie-black-16px">만원</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="money_selec money_selec-2">
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_saving-desktop', +10)">
+                    <div class="_ _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+10</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_saving-desktop', +100)">
+                    <div class="_-1 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+100</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_saving-desktop', +1000)">
+                    <div class="_-1 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+1000</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec4" onclick="changeValue('input_saving-desktop', +10000)">
+                    <div class="_-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+1</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">억</span>
+                    </div>
+                  </button>
+                </div>
+              </article>
+              <article class="input_money_cur">
+                <div class="input_money">
+                  <div class="input_tit">
+                    <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">현재 자산</div>
+                    <img class="tooltip" src="img/tooltip-144.svg" alt="tooltip" />
+                  </div>
+                  <div class="inputbox">
+                    <div class="input_con-8">
+                      <input type="number" id="input_current-desktop" name="input_current" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                      <div class="input_type">
+                        <div class="text applesdgothicneo-medium-eerie-black-16px">만원</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="money_selec money_selec-2">
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_current-desktop', +100)">
+                    <div class="_-4 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+100</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_current-desktop', +1000)">
+                    <div class="_-4 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+1000</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_current-desktop', +10000)">
+                    <div class="_-4 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+1</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">억</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_current-desktop', +100000)">
+                    <div class="_-4 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+10</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">억</span>
+                    </div>
+                  </button>
+                </div>
+              </article>
+              <article class="input_money_spen">
+                <div class="input_money">
+                  <div class="input_tit">
+                    <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">월 소비 금액</div>
+                    <img class="tooltip" src="img/tooltip-144.svg" alt="tooltip" />
+                  </div>
+                  <div class="inputbox">
+                    <div class="input_con-8">
+                      <input type="number" id="input_spend-desktop" name="input_spend" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                      <div class="input_type">
+                        <div class="text applesdgothicneo-medium-eerie-black-16px">만원</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="money_selec money_selec-2">
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_spend-desktop', +10)">
+                    <div class="_-8 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+10</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_spend-desktop', +100)">
+                    <div class="_-8 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+100</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_spend-desktop', +500)">
+                    <div class="_-8 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+500</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                  <button class="money_selec-1 money_selec-2" onclick="changeValue('input_spend-desktop', +1000)">
+                    <div class="_-8 _-12 sfprotext-medium-eerie-black-13px">
+                      <span class="span sfprotext-medium-eerie-black-13px">+1000</span
+                      ><span class="span applesdgothicneo-medium-eerie-black-13px">만</span>
+                    </div>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="section2_fin">
+            <div class="input_title_fin">
+              <div class="line"></div>
+              <div class="text_label text_label-9 applesdgothicneo-bold-eerie-black-15px">경제 변수</div>
+            </div>
+            <div class="input input-2">
+              <article class="input-1 input-2">
+                <div class="input_tit">
+                  <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">수익률</div>
+                  <img class="tooltip" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox">
+                  <div class="input_con-8">
+                    <input type="number" id="input_return-desktop" name="input_return" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type">
+                      <div class="text applesdgothicneo-medium-eerie-black-16px">%</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="input-1 input-2">
+                <div class="input_tit">
+                  <div class="tit-8 applesdgothicneo-medium-ship-gray-14px">인플레이션율</div>
+                  <img class="tooltip" src="img/tooltip-151.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox">
+                  <div class="input_con-8">
+                    <input type="number" id="input_inflation-desktop" name="input_inflation" class="input_text text_label-1 text_label-9 sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type">
+                      <div class="text applesdgothicneo-medium-eerie-black-16px">%</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="btn">
+            <button class="btn_reset" onclick="resetInputs()"><img class="reset_icn" src="img/reset-icn-18.svg" alt="reset_icn" /></button>
+            <div class="btn_cal" onclick="calculation()">
+              <div class="text_label-3 valign-text-middle text_label-9 applesdgothicneo-bold-white-17px">계산하기</div>
+            </div>
+          </div>
+        </div>
+        <div class="section3">
+          <div class="result_title">
+            <div class="text-8 applesdgothicneo-bold-eerie-black-20px">
+              <span id="result_text-desktop" name="result_text" class="span-1 applesdgothicneo-bold-eerie-black-20px">계산 결과</span>
+            </div>
+            <div class="conversion">
+              <input type="checkbox" id="conversion_check-desktop" name="conversion_check" class="conversion_check">
+              <label for="conversion_check-desktop" class="custom_check"></label>
+              <div class="x applesdgothicneo-medium-ship-gray-16px">현재 가치로 환산</div>
+              <div class="tooltip_icn"></div>
+            </div>
+          </div>
+          <div class="result_box">
+            <div class="result_fin_box_group">
+              <div class="result_fin_box">
+                <div class="result">
+                  <div class="text_label-4 text_label-9 applesdgothicneo-medium-eerie-black-16px">
+                    은퇴 시 <br />예상 자산
+                  </div>
+                </div>
+                <div class="result_fin_box_money">
+                  <div class="text_label-5 text_label-9 sfpro-bold-black-32px">
+                    <span id="result_total-desktop" name="result_total" class="span-2 sfpro-bold-black-32px">-</span
+                    ><span class="span-2 applesdgothicneo-bold-black-32px"> 만원</span>
+                  </div>
+                  <div class="text_label-6 text_label-9 applesdgothicneo-bold-sonic-silver-16px">
+                    <span class="span-3 applesdgothicneo-bold-sonic-silver-16px">약 </span
+                    ><span id="result_total_approx-desktop" name="result_total_approx" class="span-3 sfpro-bold-sonic-silver-16px">-</span
+                    ><span class="span-3 applesdgothicneo-bold-sonic-silver-16px"> 억</span>
+                  </div>
+                </div>
+              </div>
+              <div class="result_fin_box_icn_"><img class="union-1" src="img/union-101.svg" alt="Union" /></div>
+            </div>
+            <div class="result_need_spare_box_group">
+              <div class="result-1">
+                <div class="result_need_box">
+                  <div class="result-2">
+                    <div class="text_label-2 text_label-9 sfpro-bold-black-20px">
+                      <span id="result_need-desktop" name="result_need" class="span-4 sfpro-bold-black-20px">-</span
+                      ><span class="span-4 applesdgothicneo-bold-black-20px"> 만원</span>
+                    </div>
+                  </div>
+                  <div class="result">
+                    <div class="text_label-7 text_label-9 applesdgothicneo-medium-eerie-black-16px">
+                      은퇴 시 필요한 자산
+                    </div>
+                  </div>
+                </div>
+                <div class="result-3">
+                  <div class="overlap-group"><img class="union" src="img/union-102.svg" alt="Union" /></div>
+                </div>
+              </div>
+              <div class="result-1">
+                <div class="result_spare_box">
+                  <div class="result-2">
+                    <div class="text_label-2 text_label-9 sfpro-bold-black-20px">
+                      <span id="result_spare-desktop" name="result_spare" class="span-4 sfpro-bold-black-20px">-</span
+                      ><span class="span-4 applesdgothicneo-bold-black-20px"> 만원</span>
+                    </div>
+                  </div>
+                  <div class="result">
+                    <div name="result_label_spare" class="text_label-8 text_label-9 applesdgothicneo-medium-eerie-black-16px">여유 자산</div>
+                  </div>
+                </div>
+                <div class="result-3">
+                  <div class="overlap-group-1"><img class="union" src="img/union-102.svg" alt="Union" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="index screen">
+      <div class="section1-1">
+        <header class="header-1">
+          <div class="logo-1"></div>
+        </header>
+        <div class="title-1">
+          <h1 class="text-9 applesdgothicneo-bold-eerie-black-32px">은퇴 계산기</h1>
+          <p class="text-10 applesdgothicneo-regular-normal-sonic-silver-16px">
+            당신의 은퇴금이 소진되는 시점을 기준으로 합니다
+          </p>
+        </div>
+      </div>
+      <div class="section2-1">
+        <div class="section2_age-1">
+          <div class="input_title_age-1">
+            <div class="line-1"></div>
+            <div class="text_label-9 text_label applesdgothicneo-bold-eerie-black-15px">기본 정보</div>
+          </div>
+          <div class="input-2 input">
+            <article class="input-3 input">
+              <div class="input_tit-1">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">현재 나이</div>
+                <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-1">
+                <div class="input_con">
+                  <input type="number" id="input_ageCurrent-index" name="input_ageCurrent" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-1">
+                    <div class="text-3 applesdgothicneo-medium-eerie-black-16px">세</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="input-3 input">
+              <div class="input_tit-1">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">은퇴 나이</div>
+                <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-1">
+                <div class="input_con">
+                  <input type="number" id="input_ageRetire-index" name="input_ageRetire" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-1">
+                    <div class="text-3 applesdgothicneo-medium-eerie-black-16px">세</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="input-3 input">
+              <div class="input_tit-1">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">기대 수명</div>
+                <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-1">
+                <div class="input_con">
+                  <input type="number" id="input_ageLifespan-index" name="input_ageLifespan" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-1">
+                    <div class="text-3 applesdgothicneo-medium-eerie-black-16px">세</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="section2_money-1">
+          <div class="input_title_money-1">
+            <div class="line-1"></div>
+            <div class="text_label-9 text_label applesdgothicneo-bold-eerie-black-15px">재무 계획</div>
+          </div>
+          <div class="input_money_group-1">
+            <article class="input_money_saving-1">
+              <div class="input_money-1">
+                <div class="input_tit-1">
+                  <div class="tit applesdgothicneo-medium-ship-gray-14px">월 저축 금액</div>
+                  <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox-1">
+                  <div class="input_con">
+                    <input type="number" id="input_saving-index" name="input_saving" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type-1">
+                      <div class="text-3 applesdgothicneo-medium-eerie-black-16px">만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="money_selec-2 money_selec">
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_saving-index', +10)">
+                  <div class="_-12 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+10</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_saving-index', +100)">
+                  <div class="_-12 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+100</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_saving-index', +1000)">
+                  <div class="_-12 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+1000</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_saving-index', +10000)">
+                  <div class="_-12 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+1</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">억</span>
+                  </div>
+                </button>
+              </div>
+            </article>
+            <article class="input_money_cur-1">
+              <div class="input_money-1">
+                <div class="input_tit-1">
+                  <div class="tit applesdgothicneo-medium-ship-gray-14px">현재 자산</div>
+                  <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox-1">
+                  <div class="input_con">
+                    <input type="number" id="input_current-index" name="input_current" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type-1">
+                      <div class="text-3 applesdgothicneo-medium-eerie-black-16px">만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="money_selec-2 money_selec">
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_current-index', +100)">
+                  <div class="_-16 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+100</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_current-index', +1000)">
+                  <div class="_-16 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+1000</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_current-index', +10000)">
+                  <div class="_-16 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+1</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">억</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_current-index', +100000)">
+                  <div class="_-16 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+10</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">억</span>
+                  </div>
+                </button>
+              </div>
+            </article>
+            <article class="input_money_spen-1">
+              <div class="input_money-1">
+                <div class="input_tit-1">
+                  <div class="tit applesdgothicneo-medium-ship-gray-14px">월 소비 금액</div>
+                  <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox-1">
+                  <div class="input_con">
+                    <input type="number" id="input_spend-index" name="input_spend" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type-1">
+                      <div class="text-3 applesdgothicneo-medium-eerie-black-16px">만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="money_selec-2 money_selec">
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_spend-index', +10)">
+                  <div class="_-20 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+10</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_spend-index', +100)">
+                  <div class="_-20 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+100</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_spend-index', +500)">
+                  <div class="_-20 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+500</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-3 money_selec" onclick="changeValue('input_spend-index', +1000)">
+                  <div class="_-20 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-5 sfprotext-medium-eerie-black-13px">+1000</span
+                    ><span class="span-5 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="section2_fin-1">
+          <div class="input_title_fin-1">
+            <div class="line-1"></div>
+            <div class="text_label-9 text_label applesdgothicneo-bold-eerie-black-15px">경제 변수</div>
+          </div>
+          <div class="input-2 input">
+            <article class="input-3 input">
+              <div class="input_tit-1">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">수익률</div>
+                <img class="tooltip-1" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-1">
+                <div class="input_con">
+                  <input type="number" id="input_return-index" name="input_return" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-1">
+                    <div class="text-3 applesdgothicneo-medium-eerie-black-16px">%</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="input-3 input">
+              <div class="input_tit-1">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">인플레이션율</div>
+                <img class="tooltip-1" src="img/tooltip-151.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-1">
+                <div class="input_con">
+                  <input type="number" id="input_inflation-index" name="input_inflation" class="input_text-1 text_label-10 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-1">
+                    <div class="text-3 applesdgothicneo-medium-eerie-black-16px">%</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="btn-1">
+          <button class="btn_reset-1" onclick="resetInputs()"><img class="reset_icn-1" src="img/reset-icn-18.svg" alt="reset_icn" /></button>
+          <div class="btn_cal-1" onclick="calculation()">
+            <div class="text_label-12 valign-text-middle text_label applesdgothicneo-bold-white-17px">계산하기</div>
+          </div>
+        </div>
+      </div>
+      <div class="section3-1">       
+        <div class="result_title-1">
+          <div class="text-16 applesdgothicneo-bold-eerie-black-20px">
+            <span id="result_text-index" name="result_text" class="span-6 applesdgothicneo-bold-eerie-black-20px">계산 결과</span>
+          </div>
+          <div class="conversion-1">
+            <input type="checkbox" id="conversion_check-index" name="conversion_check" class="conversion_check">
+            <label for="conversion_check-index" class="custom_check"></label>
+            <div class="x-1 applesdgothicneo-medium-ship-gray-16px">현재 가치로 환산</div>
+            <div class="tooltip_icn-1"></div>
+          </div>
+        </div>
+        <div class="result_box-1">
+          <div class="result_fin_box_group-1">
+            <div class="result_fin_box-1">
+              <div class="result-4">
+                <div class="text_label-13 text_label applesdgothicneo-medium-eerie-black-16px">
+                  은퇴 시 <br />예상 자산
+                </div>
+              </div>
+              <div class="result_fin_box_money-1">
+                <div class="text_label-14 text_label sfpro-bold-black-32px">
+                  <span id="result_total-index" name="result_total" class="span-7 sfpro-bold-black-32px">-</span
+                  ><span class="span-7 applesdgothicneo-bold-black-32px"> 만원</span>
+                </div>
+                <div class="text_label-15 text_label applesdgothicneo-bold-sonic-silver-16px">
+                  <span class="span-8 applesdgothicneo-bold-sonic-silver-16px">약 </span
+                  ><span id="result_total_approx-index" name="result_total_approx" class="span-8 sfpro-bold-sonic-silver-16px">-</span
+                  ><span class="span-8 applesdgothicneo-bold-sonic-silver-16px"> 억</span>
+                </div>
+              </div>
+            </div>
+            <div class="result_fin_box_icn_-1"><img class="union-3" src="img/union-101.svg" alt="Union" /></div>
+          </div>
+          <div class="result_need_spare_box_group-1">
+            <div class="result-5">
+              <div class="result_need_box-1">
+                <div class="result-6">
+                  <div class="text_label-11 text_label sfpro-bold-black-20px">
+                    <span id="result_need-index" name="result_need" class="span-9 sfpro-bold-black-20px">-</span
+                    ><span class="span-9 applesdgothicneo-bold-black-20px"> 만원</span>
+                  </div>
+                </div>
+                <div class="result_need_box_text">
+                  <div class="text_label-16 text_label applesdgothicneo-medium-eerie-black-16px">
+                    은퇴 시 필요한 자산
+                  </div>
+                </div>
+              </div>
+              <div class="result-7">
+                <div class="overlap-group-2 overlap-group">
+                  <img class="union-2" src="img/union-102.svg" alt="Union" />
+                </div>
+              </div>
+            </div>
+            <div class="result-5">
+              <div class="result_spare_box-1">
+                <div class="result-6">
+                  <div class="text_label-11 text_label sfpro-bold-black-20px">
+                    <span id="result_spare-index" name="result_spare" class="span-9 sfpro-bold-black-20px">-</span
+                    ><span class="span-9 applesdgothicneo-bold-black-20px"> 만원</span>
+                  </div>
+                </div>
+                <div class="result-4">
+                  <div name="result_label_spare" class="text_label-17 text_label applesdgothicneo-medium-eerie-black-16px">여유 자산</div>
+                </div>
+              </div>
+              <div class="result-7">
+                <div class="overlap-group-3 overlap-group">
+                  <img class="union-2" src="img/union-102.svg" alt="Union" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tablet screen">
+      <div class="section1-2">
+        <header class="header-2">
+          <div class="logo-2"></div>
+        </header>
+        <div class="title-2">
+          <h1 class="text-17 applesdgothicneo-bold-eerie-black-32px">은퇴 계산기</h1>
+          <p class="text-18 applesdgothicneo-regular-normal-sonic-silver-16px">
+            당신의 은퇴금이 소진되는 시점을 기준으로 합니다
+          </p>
+        </div>
+      </div>
+      <div class="section2-3 section2">
+        <div class="section2-2 section2">
+          <div class="input_title_age-2">
+            <div class="line-2"></div>
+            <div class="text_label-18 text_label applesdgothicneo-bold-eerie-black-15px">기본 정보</div>
+          </div>
+          <div class="input-4 input">
+            <article class="input-5 input">
+              <div class="input_tit-2">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">현재 나이</div>
+                <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-2">
+                <div class="input_con">
+                  <input type="number" id="input_ageCurrent-tablet" name="input_ageCurrent" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-2">
+                    <div class="text-4 applesdgothicneo-medium-eerie-black-16px">세</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="input-5 input">
+              <div class="input_tit-2">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">은퇴 나이</div>
+                <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-2">
+                <div class="input_con">
+                  <input type="number" id="input_ageRetire-tablet" name="input_ageRetire" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-2">
+                    <div class="text-4 applesdgothicneo-medium-eerie-black-16px">세</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="input-5 input">
+              <div class="input_tit-2">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">기대 수명</div>
+                <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-2">
+                <div class="input_con">
+                  <input type="number" id="input_ageLifespan" name="input_ageLifespan" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-2">
+                    <div class="text-4 applesdgothicneo-medium-eerie-black-16px">세</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="section2-2 section2">
+          <div class="input_title_money-2">
+            <div class="line-2"></div>
+            <div class="text_label-18 text_label applesdgothicneo-bold-eerie-black-15px">재무 계획</div>
+          </div>
+          <div class="input_money_group-2">
+            <article class="input_money_saving-2">
+              <div class="input_money-2">
+                <div class="input_tit-2">
+                  <div class="tit applesdgothicneo-medium-ship-gray-14px">월 저축 금액</div>
+                  <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox-2">
+                  <div class="input_con">
+                    <input type="number" id="input_saving-tablet" name="input_saving" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type-2">
+                      <div class="text-4 applesdgothicneo-medium-eerie-black-16px">만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="money_selec-4 money_selec">
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_saving-tablet', +10)">
+                  <div class="_-24 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+10</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_saving-tablet', +100)">
+                  <div class="_-24 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+100</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_saving-tablet', +1000)">
+                  <div class="_-24 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+1000</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_saving-tablet', +10000)">
+                  <div class="_-24 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+1</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">억</span>
+                  </div>
+                </button>
+              </div>
+            </article>
+            <article class="input_money_cur-2">
+              <div class="input_money-2">
+                <div class="input_tit-2">
+                  <div class="tit applesdgothicneo-medium-ship-gray-14px">현재 자산</div>
+                  <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox-2">
+                  <div class="input_con">
+                    <input type="number" id="input_current-tablet" name="input_current" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type-2">
+                      <div class="text-4 applesdgothicneo-medium-eerie-black-16px">만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="money_selec-4 money_selec">
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_current-tablet', +100)">
+                  <div class="_-28 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+100</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_current-tablet', +1000)">
+                  <div class="_-28 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+1000</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_current-tablet', +10000)">
+                  <div class="_-28 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+1</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">억</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_current-tablet', +100000)">
+                  <div class="_-28 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+10</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">억</span>
+                  </div>
+                </button>
+              </div>
+            </article>
+            <article class="input_money_spen-2">
+              <div class="input_money-2">
+                <div class="input_tit-2">
+                  <div class="tit applesdgothicneo-medium-ship-gray-14px">월 소비 금액</div>
+                  <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+                </div>
+                <div class="inputbox-2">
+                  <div class="input_con">
+                    <input type="number" id="input_spend-tablet" name="input_spend" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                    <div class="input_type-2">
+                      <div class="text-4 applesdgothicneo-medium-eerie-black-16px">만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="money_selec-4 money_selec">
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_spend-tablet', +10)">
+                  <div class="_-32 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+10</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_spend-tablet', +100)">
+                  <div class="_-32 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+100</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_spend-tablet', +500)">
+                  <div class="_-32 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+500</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+                <button class="money_selec-5 money_selec" onclick="changeValue('input_spend-tablet', +1000)">
+                  <div class="_-32 _ sfprotext-medium-eerie-black-13px">
+                    <span class="span-10 sfprotext-medium-eerie-black-13px">+1000</span
+                    ><span class="span-10 applesdgothicneo-medium-eerie-black-13px">만</span>
+                  </div>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="section2-2 section2">
+          <div class="input_title_fin-2">
+            <div class="line-2"></div>
+            <div class="text_label-18 text_label applesdgothicneo-bold-eerie-black-15px">경제 변수</div>
+          </div>
+          <div class="input-4 input">
+            <article class="input-5 input">
+              <div class="input_tit-2">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">수익률</div>
+                <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-2">
+                <div class="input_con">
+                  <input type="number" id="input_return-tablet" name="input_return" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-2">
+                    <div class="text-4 applesdgothicneo-medium-eerie-black-16px">%</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="input-5 input">
+              <div class="input_tit-2">
+                <div class="tit applesdgothicneo-medium-ship-gray-14px">인플레이션율</div>
+                <img class="tooltip-2" src="img/tooltip-144.svg" alt="tooltip" />
+              </div>
+              <div class="inputbox-2">
+                <div class="input_con">
+                  <input type="number" id="input_inflation-tablet" name="input_inflation" class="input_text-2 text_label-19 text_label sfprotext-regular-normal-silver-16px" value="0">
+                  <div class="input_type-2">
+                    <div class="text-4 applesdgothicneo-medium-eerie-black-16px">%</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="btn-2">
+          <div class="btn_reset-2" onclick="resetInputs()"><img class="reset_icn-2" src="img/reset-icn-18.svg" alt="reset_icn" /></div>
+          <div class="btn_cal-2" onclick="calculation()">
+            <div class="text_label-21 valign-text-middle text_label applesdgothicneo-bold-white-17px">계산하기</div>
+          </div>
+        </div>
+      </div>
+      <div class="section3-2">
+        <div class="result_title-2">
+          <div class="text-24 applesdgothicneo-bold-eerie-black-20px">
+            <span id="result_text-tablet" name="result_text" class="span-11 applesdgothicneo-bold-eerie-black-20px">계산 결과</span>
+          </div>
+          <div class="conversion-2">
+            <input type="checkbox" id="conversion_check-tablet" name="conversion_check" class="conversion_check">
+            <label for="conversion_check-tablet" class="custom_check"></label>
+            <div class="x-2 applesdgothicneo-medium-ship-gray-16px">현재 가치로 환산</div>
+            <div class="tooltip_icn-2"></div>
+          </div>
+        </div>
+        <div class="result_box-2">
+          <div class="result_fin_box_group-2">
+            <div class="result_fin_box-2">
+              <div class="result-8">
+                <div class="text_label-22 text_label applesdgothicneo-medium-eerie-black-16px">
+                  은퇴 시 <br />예상 자산
+                </div>
+              </div>
+              <div class="result_fin_box_money-2">
+                <div class="text_label-23 text_label sfpro-bold-black-32px">
+                  <span id="result_total-tablet" name="result_total" class="span-12 sfpro-bold-black-32px">-</span
+                  ><span class="span-12 applesdgothicneo-bold-black-32px"> 만원</span>
+                </div>
+                <div class="text_label-24 text_label applesdgothicneo-bold-sonic-silver-16px">
+                  <span class="span-13 applesdgothicneo-bold-sonic-silver-16px">약 </span
+                  ><span id="result_total_approx-tablet" name="result_total_approx" class="span-13 sfpro-bold-sonic-silver-16px">-</span
+                  ><span class="span-13 applesdgothicneo-bold-sonic-silver-16px"> 억</span>
+                </div>
+              </div>
+            </div>
+            <div class="result_fin_box_icn_-2"><img class="union-5" src="img/union-101.svg" alt="Union" /></div>
+          </div>
+          <div class="result_need_spare_box_group-2">
+            <div class="result-9">
+              <div class="result_need_box-2">
+                <div class="result-10">
+                  <div class="text_label-20 text_label sfpro-bold-black-20px">
+                    <span id="result_need-tablet" name="result_need" class="span-14 sfpro-bold-black-20px">-</span
+                    ><span class="span-14 applesdgothicneo-bold-black-20px"> 만원</span>
+                  </div>
+                </div>
+                <div class="result-8">
+                  <div class="text_label-25 text_label applesdgothicneo-medium-eerie-black-16px">
+                    은퇴 시 필요한 자산
+                  </div>
+                </div>
+              </div>
+              <div class="result-11">
+                <div class="overlap-group-4 overlap-group">
+                  <img class="union-4" src="img/union-102.svg" alt="Union" />
+                </div>
+              </div>
+            </div>
+            <div class="result-9">
+              <div class="result_spare_box-2">
+                <div class="result-10">
+                  <div class="text_label-20 text_label sfpro-bold-black-20px">
+                    <span id="result_spare-tablet" name="result_spare" class="span-14 sfpro-bold-black-20px">-</span
+                    ><span class="span-14 applesdgothicneo-bold-black-20px"> 만원</span>
+                  </div>
+                </div>
+                <div class="result-8">
+                  <div name="result_label_spare" class="text_label-26 text_label applesdgothicneo-medium-eerie-black-16px">여유 자산</div>
+                </div>
+              </div>
+              <div class="result-11">
+                <div class="overlap-group-5 overlap-group">
+                  <img class="union-4" src="img/union-113.svg" alt="Union" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
