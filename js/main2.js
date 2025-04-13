@@ -59,10 +59,10 @@ function calculation() {
     let returnRequired = calculateRetirementReturnRequired(ageCurrent, ageRetire, ageLifespan, saving, currentAssets, spending, inflationRate);
     let inflationMax = calculatedRetirementInflationMax(ageCurrent, ageRetire, ageLifespan, spending, returnRate, totalRetirementAssets)
 
-    if (isChecked) {
-        totalRetirementAssets = convertCurrentValue(totalRetirementAssets, ageCurrent, ageRetire, inflationRate);
-        requiredRetirementAssets = convertCurrentValue(requiredRetirementAssets, ageCurrent, ageRetire, inflationRate);
-    };
+    // if (isChecked) {
+    //     totalRetirementAssets = convertCurrentValue(totalRetirementAssets, ageCurrent, ageRetire, inflationRate);
+    //     requiredRetirementAssets = convertCurrentValue(requiredRetirementAssets, ageCurrent, ageRetire, inflationRate);
+    // };
 
     const totalRetirementAssets_approx = Math.round(totalRetirementAssets / 1000) / 10;
     const requiredRetirementAssets_approx = Math.round(requiredRetirementAssets / 1000) / 10;
@@ -75,7 +75,7 @@ function calculation() {
     updateEnoughElements(enough);
 
     // 은퇴 예상 자산
-    updateElementsByName("result_total", totalRetirementAssets.toFixed(0));
+    updateElementsByName("result_total", parseFloat(totalRetirementAssets.toFixed(0)));
     if (totalRetirementAssets_approx >= 1) {
         updateElementsByName("result_total_approx", totalRetirementAssets_approx)
     } else {
@@ -83,7 +83,7 @@ function calculation() {
     };
 
     // 은퇴 필요 자산
-    updateElementsByName("result_need", requiredRetirementAssets.toFixed(0));
+    updateElementsByName("result_need", parseFloat(requiredRetirementAssets.toFixed(0)));
     if (requiredRetirementAssets_approx >= 1) {
         updateElementsByName("result_need_approx", requiredRetirementAssets_approx)
     } else {
@@ -91,15 +91,20 @@ function calculation() {
     };
 
     // 은퇴 여유/부족 금액
-    updateElementsByName("result_spare", assetsDifference.toFixed(0));
+    updateElementsByName("result_spare", parseFloat(assetsDifference.toFixed(0)));
     if (assetsDifference_approx >= 1) {
         updateElementsByName("result_spare_approx", assetsDifference_approx)
     } else {
         updateElementsByName("result_spare_approx", '-')
     };
 
+    // (in case 활성화) 현재 가치로 환산
+    if (isChecked) {
+        convsertPresentValue();
+    }
+
     // 은퇴 후 월 생활비
-    updateElementsByName("result_spendMax", spendMax.toFixed(0));
+    updateElementsByName("result_spendMax", parseFloat(spendMax.toFixed(0)));
     updateElementsByName("result_spendInput", spending);
     updateElementsByName("spendDiff", Math.abs(spendMax - spending).toFixed(0));
 
@@ -114,18 +119,18 @@ function calculation() {
     updateElementsByName("result_lifespanDiff", Math.abs(lifespanPossible - ageLifespan));
 
     // 월 저축금액
-    updateElementsByName("result_savingRequired", savingRequired.toFixed(0));
+    updateElementsByName("result_savingRequired", parseFloat(savingRequired.toFixed(0)));
     updateElementsByName("result_savingInput", saving);
     updateElementsByName("result_savingDiff", Math.abs(savingRequired - saving).toFixed(0));
 
     // 목표 수익률
-    updateElementsByName("result_returnRequired", (returnRequired).toFixed(1));
+    updateElementsByName("result_returnRequired", parseFloat((returnRequired).toFixed(1)));
     updateElementsByName("result_returnInput", returnRate*100);
     updateElementsByName("result_returnDiff", Math.abs(returnRequired - returnRate*100).toFixed(1));
 
     // 예상 인플레이션
     console.log('최대 가능 inflation', inflationMax);
-    updateElementsByName("result_inflationMax", inflationMax.toFixed(1));
+    updateElementsByName("result_inflationMax", parseFloat(inflationMax.toFixed(1)));
     updateElementsByName("result_inflationInput", inflationRate*100);
     updateElementsByName("result_inflationDiff", Math.abs(inflationMax - inflationRate*100).toFixed(1));
 
@@ -375,7 +380,12 @@ function calculatedRetirementInflationMax(ageCurrent, ageRetire, ageLifespan, sp
 
 function updateElementsByName(name, value) {
     document.getElementsByName(name).forEach(element => {
-        element.innerText = value;
+        if (typeof value === 'number') {
+            element.innerText = value.toLocaleString('en-US');
+        } else {
+            element.innerText = value;
+        }
+
     });
 }
 
@@ -396,7 +406,7 @@ function updateEnoughElements(enough) {
     if (enough) {
         
     } else {
-        updateElementsByName("result_text", "부족해요 🎉");
+        updateElementsByName("result_text", "부족해요 😫");
         updateElementsByName("result_label_spare", "부족 금액");
         updateElementsByName("result_text2", "현재 은퇴 계획으로는 생활이 어려워요.");
         updateElementsByName("result_text3", "만큼 적게 써야 해요");
@@ -418,19 +428,18 @@ function convertCurrentValue(value, ageCurrent, ageRetire, inflationRate) {
 }
 
 document.querySelector('input[name="conversion_check"]').addEventListener('change', function () {
+    const boxes = document.querySelectorAll('.result_fin_box_present, .result_need_spare_box_present');
+    boxes.forEach(box => {
+      box.classList.toggle('hidden');
+    });
+
     if (this.checked) {
-      changeCurrentValue(true); // 체크되었을 때
-    } else {
-      changeCurrentValue(false); // 체크 해제되었을 때
+      convsertPresentValue(); // 체크되었을 때
     }
   });
 
-function changeCurrentValue(bool) {
-    if (bool) {
-        console.log("현재 가치로 환산하기");
-    } else {
-        console.log("미래 가치로 환산하기");
-    }
+function convsertPresentValue() {
+    console.log("현재 가치로 환산하기");
 
     if (calculated) {
         const ageCurrent = parseInt(document.getElementById('input_ageCurrent-desktop').value, 10);
@@ -446,38 +455,29 @@ function changeCurrentValue(bool) {
     
         // 변환 함수 정의
         const convert = (val) => val / Math.pow(1 + inflationRate, years);
-        const revert = (val) => val * Math.pow(1 + inflationRate, years);
 
-        if (bool) {
-            total = convert(total);
-            need = convert(need);
-            spare = convert(spare);
-        } else {
-            total = revert(total);
-            need = revert(need);
-            spare = revert(spare);
-        }
+        total = convert(total);
+        need = convert(need);
+        spare = convert(spare);
 
         let total_approx = Math.round(total / 1000) / 10;
         let need_approx = Math.round(need / 1000) / 10;
         let spare_approx = Math.round(spare / 1000) / 10;
 
-        updateElementsByName("result_total", total.toFixed(0));
         if (total_approx >= 1) {
-            updateElementsByName("result_total_approx", total_approx)
-        };
-    
-        updateElementsByName("result_need", need.toFixed(0));
-        if (need_approx >= 1) {
-            updateElementsByName("result_need_approx", need_approx)
-        };
-    
-        updateElementsByName("result_spare", spare.toFixed(0));
-        if (spare_approx >= 1) {
-            updateElementsByName("result_spare_approx", spare_approx)
+            updateElementsByName("result_fin_box_present_value", total_approx)
         };
 
-        
+        updateElementsByName("result_fin_box_present_applied", `인플레이션 ${inflationRate*100}% x ${years}년 적용`)
+
+        if (need_approx >= 1) {
+            updateElementsByName("result_need_box_present_value", need_approx)
+        };
+
+        if (spare_approx >= 1) {
+            updateElementsByName("result_spare_box_present_value", spare_approx)
+        };
+
     } else {
         console.log("아직 계산 결과가 없습니다.")
     }
