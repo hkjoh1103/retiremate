@@ -143,7 +143,7 @@ function changeValue(inputId, amount) {
 }
 
 function resetInputs() {
-    document.querySelectorAll('input.number-format').forEach(input => {
+    document.querySelectorAll('input.number-format, input.float-format').forEach(input => {
         input.value = '';
         input.dispatchEvent(new Event('input', { bubbles: true }));
     });
