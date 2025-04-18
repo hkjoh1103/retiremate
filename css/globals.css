@@ -16,12 +16,9 @@
   justify-content: center;
 }
 
-input:focus {
-  outline: none;
-}
-
 .hidden,
 .hidden * {
+  display: none !important;
   pointer-events: none;
   visibility: hidden;
 }

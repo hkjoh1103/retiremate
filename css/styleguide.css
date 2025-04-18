@@ -19,6 +19,7 @@
   --primary-colorblue500: #007dfe;
   --primary-colorgreen200: #defae4;
   --primary-colorgreen500: #09ab49;
+  --primary-colorred200: #ffeaeb;
   --primary-colorred500: #f73530;
  
   --font-size-l: 16px;
@@ -111,7 +112,7 @@
 }
 
 .sfprotext-regular-normal-silver-16px {
-  color: var(--grayscalegray400);
+  color: var(--grayscalegray900);
   font-family: var(--font-family-sf_pro_text-regular);
   font-size: var(--font-size-l);
   font-style: normal;
@@ -229,7 +230,23 @@
   font-weight: 500;
 }
 
+.sfprotext-medium-azure-radiance-15px-fix {
+  color: var(--primary-colorblue500);
+  font-family: var(--font-family-sf_pro_text-medium);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 500;
+}
+
 .sfprotext-medium-red-orange-15px {
+  color: var(--primary-colorred500);
+  font-family: var(--font-family-sf_pro_text-medium);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.sfprotext-medium-red-orange-15px-fix {
   color: var(--primary-colorred500);
   font-family: var(--font-family-sf_pro_text-medium);
   font-size: var(--font-size-m);
