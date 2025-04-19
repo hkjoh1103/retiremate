@@ -5391,6 +5391,16 @@
   padding: 0;
 }
 
+.union-plus {
+  height: 14px;
+  width: 14px;
+}
+
+.union-minus {
+  height: 2px;
+  width: 14px;
+}
+
 
 @media screen and (max-width: 767px) {
   .screen.desktop { 

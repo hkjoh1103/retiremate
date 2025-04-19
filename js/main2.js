@@ -590,6 +590,7 @@ function updateEnoughColor(enough) {
 
         document.querySelectorAll('[name="result_spare_box_icn"]').forEach(elem => {
             elem.style.backgroundColor = 'var(--primary-colorblue500)';
+            elem.innerHTML = `<img class="union-plus" src="img/union-2@2x.png" alt="Union" />`;
             });
 
         const enough_red_elements = document.querySelectorAll('.sfprotext-medium-red-orange-15px');
@@ -614,6 +615,7 @@ function updateEnoughColor(enough) {
 
         document.querySelectorAll('[name="result_spare_box_icn"]').forEach(elem => {
             elem.style.backgroundColor = 'var(--primary-colorred500)';
+            elem.innerHTML = `<img class="union-minus" src="img/union-91@2x.png" alt="Union" />`;
             });
 
         const enough_red_elements = document.querySelectorAll('.sfprotext-medium-red-orange-15px');
