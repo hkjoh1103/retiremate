@@ -301,7 +301,17 @@ let applied = { ...DEFAULTS }; // 계산하기를 눌러 반영된 값
 let presentValue = false;      // 현재 가치로 환산
 
 const readNum = (el) => el.value === '' ? NaN : Number(el.value);
-function writeInputs() { inputs.forEach((el, i) => { const v = form_[FIELDS[i]]; el.value = Number.isNaN(v) ? '' : v; }); validate(); }
+const CLEAR_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6" stroke="var(--card)" stroke-width="2" stroke-linecap="round"/></svg>';
+// 입력칸마다 지우기(x) 버튼: 값이 있을 때만 보여요
+const clearBtns = inputs.map((el, i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'clear-btn'; b.setAttribute('aria-label', '입력한 값 지우기'); b.innerHTML = CLEAR_ICON;
+  b.addEventListener('click', () => { form_[FIELDS[i]] = NaN; el.value = ''; syncClear(); validate(); el.focus(); });
+  el.after(b);
+  return b;
+});
+function syncClear() { inputs.forEach((el, i) => { clearBtns[i].hidden = el.value === ''; }); }
+function writeInputs() { inputs.forEach((el, i) => { const v = form_[FIELDS[i]]; el.value = Number.isNaN(v) ? '' : v; }); syncClear(); validate(); }
 const NON_NEGATIVE = ['currentAge', 'retireAge', 'lifeExpectancy', 'monthlySaving', 'currentAssets', 'monthlySpend'];
 function isValid(p) { return FIELDS.every((f) => Number.isFinite(p[f])) && NON_NEGATIVE.every((f) => p[f] >= 0) && p.currentAge < p.retireAge && p.retireAge < p.lifeExpectancy; }
 function validate() {
@@ -311,7 +321,7 @@ function validate() {
 }
 
 inputs.forEach((el, i) => {
-  el.addEventListener('input', () => { form_[FIELDS[i]] = readNum(el); validate(); });
+  el.addEventListener('input', () => { form_[FIELDS[i]] = readNum(el); syncClear(); validate(); });
   const quick = el.closest('div.min-w-0').querySelector('.grid-cols-4');
   if (quick) quick.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
     const cur = form_[FIELDS[i]];

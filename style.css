@@ -288,3 +288,8 @@ html { scrollbar-gutter: stable; }
 .table-wrap td:first-child, .table-wrap th:first-child { white-space: normal; min-width: 7em; }
 /* 글의 계산기 버튼으로 들어왔을 때 관련 입력칸 강조 */
 .is-highlight { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 25%, transparent); }
+
+/* 입력칸 지우기(x) 버튼 */
+.clear-btn { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; margin: -4px -4px -4px -6px; border-radius: 9999px; color: color-mix(in oklab, var(--muted-foreground) 55%, transparent); }
+.clear-btn:hover { color: var(--muted-foreground); }
+.clear-btn:focus-visible { outline: 2px solid var(--ring); outline-offset: 1px; }

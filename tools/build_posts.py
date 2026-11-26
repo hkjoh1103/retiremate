@@ -76,7 +76,24 @@ def parse_calculator(text):
     return fields, search
 
 
+def strip_calc_marks(md):
+    """원고의 '(계산)' 표시를 화면용으로 정리해요.
+    본문: 표시를 지워요. 출처: '- (계산) …' 줄은 '- 계산식: …'으로 바꿔요.
+    원고 파일은 그대로 두고, 화면에 나갈 때만 바뀌어요."""
+    out, in_src = [], False
+    for line in md.splitlines():
+        if line.startswith('## '):
+            in_src = line[3:].strip() == '출처'
+        if in_src:
+            line = re.sub(r'^(\s*[-*]\s+)\(계산\)은 리메이트가 발표 수치로 직접 계산한 값이에요\.\s*', r'\1', line)
+            line = re.sub(r'^(\s*[-*]\s+)\(계산\)\s*', r'\1계산식: ', line)
+        line = re.sub(r'\s*\(계산\)', '', line)
+        out.append(line)
+    return '\n'.join(out)
+
+
 def parse_body(md):
+    md = strip_calc_marks(md)
     lines = md.strip('\n').splitlines()
     title = subtitle = None
     blocks, sources, cta = [], [], None
@@ -170,7 +187,7 @@ def main(src):
             'category': meta['category'], 'date': meta.get('checked', '').replace('-', '.'),
             'image': f'/assets/thumbs/{slug}.jpg',
             'thumbText': thumb_text.strip(), 'thumbScene': thumb_scene.strip(),
-            'seoTitle': meta.get('seo_title'), 'seoDescription': meta.get('seo_description'),
+            'seoTitle': meta.get('seo_title'), 'seoDescription': re.sub(r'\s*\(계산\)', '', meta.get('seo_description') or '') or None,
             'keywords': meta.get('keywords', []),
             'body': blocks, 'sources': sources, 'cta': cta,
         }
