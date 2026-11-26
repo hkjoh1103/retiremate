@@ -53,6 +53,7 @@
 <script>
 document.getElementById('share').addEventListener('click', async () => {
   const url = location.href, title = document.querySelector('h1').textContent;
+  track('share', { post_slug: location.pathname.split('/')[2], method: navigator.share ? 'native' : 'copy' });
   if (navigator.share) await navigator.share({ title, url }).catch(() => {});
   else { await navigator.clipboard.writeText(url); alert('링크를 복사했어요'); }
 });

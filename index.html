@@ -319,7 +319,13 @@ inputs.forEach((el, i) => {
   }));
 });
 document.getElementById('reset').addEventListener('click', () => { form_ = { ...DEFAULTS }; writeInputs(); });
-form.addEventListener('submit', (e) => { e.preventDefault(); if (isValid(form_)) { applied = { ...form_ }; render(); } });
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!isValid(form_)) return;
+  applied = { ...form_ };
+  render();
+  track('calculate', { from: location.search ? 'post_link' : 'direct', result: calculate(applied).enough ? 'enough' : 'short' });
+});
 
 const CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
 

@@ -121,4 +121,21 @@ function initMenu() {
     btn.innerHTML = mnav.hidden ? ICON.menu('h-5 w-5') : ICON.x('h-5 w-5');
   });
 }
-if (typeof document !== 'undefined') initMenu();
+/* ---------- 측정 (구글 애널리틱스 이벤트) ----------
+   calculate          계산기에서 계산하기 (index.html)
+   post_to_calculator 글 본문의 계산기 버튼
+   open_post          계산기·블로그·글에서 다른 글로 이동 (from: calculator / blog_list / post)
+   share              글 공유하기 (post_template.html) */
+function track(name, params = {}) { if (typeof gtag === 'function') gtag('event', name, params); }
+function initTracking() {
+  const slugOf = (path) => (path.match(/^\/blog\/([a-z0-9-]+)\/$/) || [])[1];
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('main a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href'), here = location.pathname;
+    const from = here === '/' ? 'calculator' : slugOf(here) ? 'post' : 'blog_list';
+    if (slugOf(here) && (href === '/' || href.startsWith('/?'))) track('post_to_calculator', { post_slug: slugOf(here) });
+    else if (slugOf(href)) track('open_post', { post_slug: slugOf(href), from });
+  });
+}
+if (typeof document !== 'undefined') { initMenu(); initTracking(); }
