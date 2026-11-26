@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>리메이트 디자인 시스템</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<!-- 실제 서비스와 같은 스타일 파일을 씁니다. 아래 견본은 모두 실제 클래스로 그려집니다. -->
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* 이 문서 전용 (서비스에는 쓰지 않음) */
+  .ds-wrap { max-width: 960px; margin-inline: auto; padding: 48px 20px 96px; }
+  .ds-section { margin-top: 64px; }
+  .ds-h2 { border-top: 2px solid var(--foreground); padding-top: 12px; font-size: 20px; font-weight: 700; }
+  .ds-desc { margin-top: 6px; font-size: 14px; color: var(--muted-foreground); line-height: 1.6; }
+  .ds-h3 { margin-top: 32px; margin-bottom: 12px; font-size: 14px; font-weight: 700; }
+  .ds-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--muted-foreground); }
+  .ds-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+  .ds-swatch { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
+  .ds-chip { height: 56px; border-bottom: 1px solid var(--border); }
+  .ds-meta { padding: 10px 12px; font-size: 12px; }
+  .ds-meta b { display: block; font-size: 13px; }
+  .ds-meta span { display: block; margin-top: 2px; color: var(--muted-foreground); }
+  .ds-type { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .ds-demo { border: 1px solid var(--border); border-radius: 16px; background: var(--background); padding: 20px; }
+  .ds-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .ds-two { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+  .ds-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .ds-table th, .ds-table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ds-table th { font-size: 12px; font-weight: 600; color: var(--muted-foreground); }
+  .ds-scroll { overflow-x: auto; }
+  .ds-spec { margin-top: 8px; }
+  @media (max-width: 640px) { .ds-type, .ds-two { grid-template-columns: 1fr; gap: 4px; } }
+</style>
+</head>
+<body>
+<div class="ds-wrap">
+
+  <!-- 머리 -->
+  <header class="border-b-2 border-foreground pb-6">
+    <img src="/assets/logo.svg" alt="ReMate" style="height:28px;width:auto">
+    <h1 class="mt-5 text-3xl font-bold">리메이트 디자인 시스템</h1>
+    <p class="ds-desc">은퇴, 같이 이야기해요. 친구처럼 편안하고 담백하게, 숫자는 믿을 수 있게 또렷하게.<br>
+      기준: 2026년 11월 · 적용: 리메이트 웹 (모바일 우선, 콘텐츠 최대 1200px)<br>
+      값의 출처: <span class="ds-code">style.css</span> · <span class="ds-code">site.js</span>. 이 페이지의 견본은 서비스와 같은 클래스로 그려집니다.</p>
+  </header>
+
+  <!-- 1. 원칙 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">1. 디자인 원칙</h2>
+    <p class="ds-desc">모든 화면과 문구는 아래 네 가지를 따릅니다.</p>
+    <div class="mt-4 ds-grid" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">
+      <div class="rounded-xl border border-border bg-card p-4"><p class="font-semibold">친구처럼</p><p class="mt-1 text-sm text-muted-foreground">은행·보험사의 딱딱한 말투 대신, 옆에서 이야기해주는 친구의 말투를 씁니다. "~해요"체.</p></div>
+      <div class="rounded-xl border border-border bg-card p-4"><p class="font-semibold">숫자는 또렷하게</p><p class="mt-1 text-sm text-muted-foreground">금액·나이·퍼센트는 크고 굵게. 고정폭 숫자(<span class="ds-code">.num</span>)로 자릿수가 흔들리지 않게 합니다.</p></div>
+      <div class="rounded-xl border border-border bg-card p-4"><p class="font-semibold">불안 대신 안내</p><p class="mt-1 text-sm text-muted-foreground">부족한 결과도 빨강 대신 황토색으로, "어떻게 하면 되는지"와 함께 보여줍니다.</p></div>
+      <div class="rounded-xl border border-border bg-card p-4"><p class="font-semibold">젊은 은퇴</p><p class="mt-1 text-sm text-muted-foreground">실버·요양 이미지를 쓰지 않습니다. 30~50대 직장인의 일상과 미래를 그립니다.</p></div>
+    </div>
+    <div class="mt-3 ds-two">
+      <div class="rounded-xl bg-enough-soft p-4 text-sm"><p class="font-semibold text-enough">이렇게 해요</p>
+        <ul class="mt-2 space-y-1"><li>· "월 272만원을 더 써도 괜찮아요"</li><li>· "94만원만큼 적게 써야 해요"</li><li>· 따뜻한 미색 바탕, 먹색 글자</li><li>· 충분/부족을 초록·황토로 구분</li></ul></div>
+      <div class="rounded-xl bg-short-soft p-4 text-sm"><p class="font-semibold text-short">이렇게 하지 않아요</p>
+        <ul class="mt-2 space-y-1"><li>· "경고: 자금이 부족합니다" 같은 빨간 경고</li><li>· 파란 은행 로고색, 격식체 문구</li><li>· 노인·요양원·지팡이 이미지</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 2. 로고 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">2. 로고</h2>
+    <p class="ds-desc">고리(O) 심볼과 둥근 워드마크. 파일: <span class="ds-code">assets/logo.svg</span> (색은 글자색을 따라갑니다, <span class="ds-code">fill="currentColor"</span>).
+      화면 상단 내비게이션과 하단 푸터에도 같은 로고를 높이 20px로 씁니다.</p>
+    <div class="mt-4 ds-two">
+      <div class="ds-demo grid place-items-center" style="min-height:140px"><img src="/assets/logo.svg" alt="ReMate 로고" style="height:40px;width:auto"></div>
+      <div class="ds-demo grid place-items-center bg-primary" style="min-height:140px;background:var(--primary)">
+        <span id="logo-inverse" style="color:var(--primary-foreground);display:block;height:40px"></span></div>
+    </div>
+    <div class="mt-3 ds-two">
+      <div class="ds-demo"><img src="/assets/logo.svg" alt="ReMate" style="height:20px;width:auto">
+        <p class="ds-code ds-spec">내비게이션·푸터 크기 · 높이 20px (가로 약 106px)</p></div>
+      <div class="ds-demo text-sm text-muted-foreground">
+        <p>· 최소 높이 20px, 주변 여백은 고리 지름의 절반 이상</p>
+        <p class="mt-1">· 먹색 또는 미색 한 가지 색으로만</p>
+        <p class="mt-1">· 비율 변경, 그림자, 그라데이션 금지</p></div>
+    </div>
+  </section>
+
+  <!-- 3. 색 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">3. 색</h2>
+    <p class="ds-desc">따뜻한 미색 바탕에 먹색 글자. 결과는 초록(충분)·황토(부족)·파랑(안내) 세 가지 의미 색으로만 구분합니다. 코드에서는 이름(토큰)으로만 씁니다.</p>
+    <div id="swatches"></div>
+  </section>
+
+  <!-- 4. 글꼴 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">4. 글꼴</h2>
+    <p class="ds-desc">전체 Pretendard Variable. 한글은 단어 단위로 줄바꿈(<span class="ds-code">word-break: keep-all</span>). 화면 너비 640px 이상에서 일부 제목이 한 단계 커집니다.</p>
+    <div class="mt-4">
+      <div class="ds-type"><span class="ds-code">페이지 제목 · 24→30px / 700</span><span class="text-2xl font-bold sm:text-3xl">은퇴 계산기</span></div>
+      <div class="ds-type"><span class="ds-code">결과 큰 숫자 · 24→30px / 800 · .num</span><span class="num text-2xl font-extrabold sm:text-3xl">98,399 만원</span></div>
+      <div class="ds-type"><span class="ds-code">섹션 제목 · 20→24px / 700</span><span class="text-xl font-bold sm:text-2xl">이 결과, 같이 읽어볼까요?</span></div>
+      <div class="ds-type"><span class="ds-code">결과 숫자 · 18px / 700 · .num</span><span class="num text-lg font-bold">143,534 만원</span></div>
+      <div class="ds-type"><span class="ds-code">본문 · 16px / 400 (글 본문 줄간격 1.8)</span><span>은퇴 후 기대 수명까지, 모은 돈으로 살 수 있는지 계산해요.</span></div>
+      <div class="ds-type"><span class="ds-code">항목 제목 · 16px / 600</span><span class="font-semibold">💸 은퇴 후 월 생활비</span></div>
+      <div class="ds-type"><span class="ds-code">입력 숫자 · 15px / 500 · .num</span><span class="num text-[15px] font-medium">20000</span></div>
+      <div class="ds-type"><span class="ds-code">보조 · 14px / 400 회색</span><span class="text-sm text-muted-foreground">숫자를 넣기 전에 참고할 글이에요</span></div>
+      <div class="ds-type"><span class="ds-code">폼 구역 제목 · 14px / 700</span><span class="text-sm font-bold">재무 계획</span></div>
+      <div class="ds-type"><span class="ds-code">레이블 · 12px / 400 회색</span><span class="text-xs text-muted-foreground">월 저축 금액</span></div>
+      <div class="ds-type"><span class="ds-code">태그 · 11px / 400</span><span><span class="inline-block rounded bg-secondary px-1.5 py-0.5 text-[11px] text-muted-foreground">은퇴 자금</span></span></div>
+    </div>
+  </section>
+
+  <!-- 5. 컴포넌트 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">5. 컴포넌트</h2>
+    <p class="ds-desc">모서리 기본 12px(<span class="ds-code">--radius</span>). 작은 버튼 10px, 결과 상자·카드 그림 16px, 큰 안내 상자 20px. 그림자는 쓰지 않고 테두리와 바탕색으로만 구분합니다.</p>
+
+    <h3 class="ds-h3">버튼</h3>
+    <div class="ds-demo">
+      <div class="flex gap-2" style="max-width:420px">
+        <button type="button" class="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-border bg-secondary" aria-label="처음 값으로"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+        <button type="button" class="h-12 flex-1 rounded-lg bg-primary font-semibold text-primary-foreground">계산하기</button>
+      </div>
+      <p class="ds-code ds-spec">주요 버튼 · 높이 48px · 먹색 · 12px · 600 &nbsp;|&nbsp; 아이콘 버튼 · 48×48 · Secondary 바탕</p>
+      <div class="mt-5 ds-row">
+        <button type="button" class="inline-flex items-center justify-center gap-1 rounded-lg border border-border bg-card px-6 py-3 text-sm">블로그 글 더 보기 →</button>
+        <button type="button" class="rounded-full border border-border bg-card px-6 py-2.5 text-sm">블로그 홈으로 돌아가기</button>
+        <button type="button" class="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">공유하기</button>
+      </div>
+      <p class="ds-code ds-spec">보조 버튼 · 흰 바탕 + 테두리 · 14px &nbsp;|&nbsp; 알약 버튼 · 이동/공유</p>
+      <div class="mt-5 grid grid-cols-4 gap-1.5" style="max-width:420px">
+        <button type="button" class="rounded-md border border-border bg-card py-1.5 text-xs hover:bg-secondary">+10만</button>
+        <button type="button" class="rounded-md border border-border bg-card py-1.5 text-xs hover:bg-secondary">+100만</button>
+        <button type="button" class="rounded-md border border-border bg-card py-1.5 text-xs hover:bg-secondary">+1000만</button>
+        <button type="button" class="rounded-md border border-border bg-card py-1.5 text-xs hover:bg-secondary">+1억</button>
+      </div>
+      <p class="ds-code ds-spec">빠른 더하기 · 4칸 · 12px 글자 · 10px 모서리</p>
+    </div>
+
+    <h3 class="ds-h3">필터 칩 · 태그</h3>
+    <div class="ds-demo">
+      <div class="flex flex-wrap gap-2">
+        <button class="rounded-full border px-3.5 py-1.5 text-sm border-primary bg-primary text-primary-foreground">전체</button>
+        <button class="rounded-full border px-3.5 py-1.5 text-sm border-border bg-card">은퇴 자금</button>
+        <button class="rounded-full border px-3.5 py-1.5 text-sm border-border bg-card">은퇴 시기</button>
+        <button class="rounded-full border px-3.5 py-1.5 text-sm border-border bg-card">은퇴 후 삶</button>
+        <button class="rounded-full border px-3.5 py-1.5 text-sm border-border bg-card">은퇴 후 건강</button>
+      </div>
+      <div class="mt-4 flex gap-2"><span class="inline-block rounded bg-secondary px-1.5 py-0.5 text-[11px] text-muted-foreground">은퇴 시기</span><span class="inline-block rounded bg-secondary px-1.5 py-0.5 text-[11px] text-muted-foreground">은퇴 자금</span></div>
+      <p class="ds-code ds-spec">선택된 칩은 먹색 채움, 나머지는 흰 바탕 + 테두리 · 태그는 4px 모서리 회색 바탕</p>
+    </div>
+
+    <h3 class="ds-h3">숫자 입력 칸</h3>
+    <div class="ds-demo">
+      <div class="space-y-5" style="max-width:420px">
+        <div class="min-w-0">
+          <label class="mb-1.5 flex items-center gap-1 text-xs text-muted-foreground" for="ds-in">월 저축 금액</label>
+          <div class="flex items-center gap-2 rounded-lg border border-input bg-card px-2 py-1.5 focus-within:border-ring"><input id="ds-in" type="number" inputmode="decimal" class="num min-w-0 flex-1 rounded bg-field px-2 py-1 text-[15px] font-medium outline-none" value="150"><span class="shrink-0 text-sm">만원</span></div>
+        </div>
+      </div>
+      <p class="ds-code ds-spec">흰 상자(12px) 안에 노란 미색(Field) 입력 영역 · 오른쪽에 단위 · 선택하면 테두리가 Ring(연초록)으로</p>
+      <p class="mt-3 text-sm text-short">나이는 현재 &lt; 은퇴 &lt; 기대 수명 순서로, 빈칸 없이 넣어주세요.</p>
+      <p class="ds-code ds-spec">입력 오류 문구 · Short 색 · 14px</p>
+    </div>
+
+    <h3 class="ds-h3">결과 요약 상자</h3>
+    <div class="ds-demo">
+      <div class="space-y-3" style="max-width:520px">
+        <div class="flex items-center justify-between rounded-xl bg-secondary p-5"><p class="text-sm">은퇴 시<br>예상 내 자산</p><div class="text-right"><p class="num text-2xl font-extrabold sm:text-3xl">98,399 만원</p><p class="num text-sm font-semibold">약 9.8 억</p></div></div>
+        <div class="flex items-center justify-between rounded-xl bg-enough-soft p-4 text-enough"><p class="text-sm">은퇴 시<br>필요한 자산</p><div class="text-right text-foreground"><p class="num text-lg font-bold">143,534 만원</p><p class="num text-sm">약 14.4 억</p></div></div>
+        <div class="flex items-center justify-between rounded-xl bg-short-soft p-4 text-short"><p class="text-sm">은퇴 시<br>부족 금액</p><div class="text-right text-foreground"><p class="num text-lg font-bold">45,135 만원</p><p class="num text-sm">약 4.5 억</p></div></div>
+      </div>
+      <p class="ds-code ds-spec">핵심 숫자는 Secondary 바탕 + 가장 큰 숫자 · 필요 자산은 Enough Soft · 차액은 결과에 따라 Enough Soft(여유) 또는 Short Soft(부족)</p>
+    </div>
+
+    <h3 class="ds-h3">제안 목록</h3>
+    <div class="ds-demo">
+      <ul style="max-width:520px">
+        <li class="border-b border-border py-4"><div class="flex justify-between gap-4"><div class="min-w-0"><p class="font-semibold">💸 은퇴 후 월 생활비</p><p class="text-xs text-muted-foreground">예상 월 소비 금액</p></div><div class="shrink-0 text-right"><p class="num font-bold">206만원</p><p class="num text-xs text-muted-foreground">300만원</p></div></div><p class="mt-1 text-right text-sm text-muted-foreground"><b class="text-short">94만원</b>만큼 적게 써야 해요</p></li>
+        <li class="border-b border-border py-4"><div class="flex justify-between gap-4"><div class="min-w-0"><p class="font-semibold">⏳ 은퇴 가능 나이</p><p class="text-xs text-muted-foreground">예상 은퇴 나이</p></div><div class="shrink-0 text-right"><p class="num font-bold">67세</p><p class="num text-xs text-muted-foreground">60세</p></div></div><p class="mt-1 text-right text-sm text-muted-foreground"><b class="text-info">7년</b> 더 늦게 은퇴해야 해요</p></li>
+        <li class="border-b border-border py-4"><div class="flex justify-between gap-4"><div class="min-w-0"><p class="font-semibold">💸 은퇴 후 월 생활비</p><p class="text-xs text-muted-foreground">예상 월 소비 금액</p></div><div class="shrink-0 text-right"><p class="num font-bold">572만원</p><p class="num text-xs text-muted-foreground">300만원</p></div></div><p class="mt-1 text-right text-sm text-muted-foreground">월 <b class="text-enough">272만원</b>을 더 써도 괜찮아요</p></li>
+      </ul>
+      <p class="ds-code ds-spec">왼쪽 항목·설명, 오른쪽 제안값·현재값 · 강조 숫자 색: 줄여야 함 = Short, 늘려야 함 = Info, 여유 = Enough</p>
+    </div>
+
+    <h3 class="ds-h3">글 카드</h3>
+    <div class="ds-demo">
+      <div class="grid gap-x-6 gap-y-10 sm:grid-cols-2" id="cards-md"></div>
+      <div class="mt-6 grid gap-x-8 sm:grid-cols-2" id="cards-row"></div>
+      <p class="ds-code ds-spec">기본 카드 · 16:9 그림(16px 모서리) + 제목 + 부제 + 태그 · 그림이 없으면 원고의 '이미지 글자'를 대신 보여줌 &nbsp;|&nbsp; 한 줄 카드 · 64px 정사각 썸네일</p>
+    </div>
+
+    <h3 class="ds-h3">글 본문 요소</h3>
+    <div class="ds-demo">
+      <div class="space-y-4 leading-[1.8]" style="max-width:640px">
+        <h2 class="pt-4 text-lg font-bold">평균 53세에 오래 다닌 일을 그만둬요</h2>
+        <div class="py-2"><p class="num text-4xl font-extrabold">53.0세</p><p class="mt-1 text-xs text-muted-foreground">가장 오래 근무한 일자리를 그만둔 평균 나이 (55~79세)</p></div>
+        <div><p class="text-sm text-muted-foreground">그만둔 이유를 보면 이렇게 나눠져요</p><table class="mt-2 w-full text-sm"><tbody><tr class="border-b border-border"><td class="py-2">건강이 좋지 않아서</td><td class="num py-2 text-right font-semibold">22.1%</td></tr><tr class="border-b border-border"><td class="py-2">정년퇴직</td><td class="num py-2 text-right font-semibold">13.2%</td></tr></tbody></table></div>
+        <div class="rounded-xl bg-short-soft p-4 text-sm"><p class="font-semibold">리메이트 팁</p><p class="mt-1">계산기의 은퇴 나이를 53세로 바꿔서 한 번 더 계산해보세요.</p></div>
+        <div class="rounded-xl bg-surface p-4 text-xs text-muted-foreground"><p class="font-semibold text-foreground">출처</p><p class="mt-1">통계청, 경제활동인구조사 고령층 부가조사 (2024.5)</p></div>
+        <div class="rounded-2xl bg-primary p-5 text-primary-foreground"><p class="font-bold">내 숫자로 그려볼까요?</p><p class="mt-1 text-sm opacity-70">글에서 본 숫자를 계산기에 바로 넣어봐요.</p><a href="#" class="mt-4 block rounded-lg bg-background py-3 text-center text-sm font-semibold text-foreground">53세 은퇴로 계산해보기 →</a></div>
+      </div>
+      <p class="ds-code ds-spec">소제목 18px/700 · 통계 숫자 36px/800 · 표 · 팁 상자(Short Soft) · 출처(Surface) · 계산기 연결 상자(먹색, 20px 모서리)</p>
+    </div>
+  </section>
+
+  <!-- 6. 레이아웃 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">6. 레이아웃</h2>
+    <div class="mt-4 ds-scroll">
+      <table class="ds-table">
+        <tr><th>항목</th><th>값</th><th>비고</th></tr>
+        <tr><td>콘텐츠 최대 너비</td><td class="ds-code">1200px</td><td>글 상세 본문만 760px</td></tr>
+        <tr><td>좌우 여백</td><td class="ds-code">20px</td><td>모바일·PC 공통</td></tr>
+        <tr><td>상단 내비게이션</td><td class="ds-code">56px</td><td>스크롤해도 상단 고정, 반투명 바탕 + 흐림. 640px 미만은 햄버거 메뉴</td></tr>
+        <tr><td>화면 구간</td><td class="ds-code">640px · 1024px</td><td>640px 이상(sm), 1024px 이상(lg)</td></tr>
+        <tr><td>계산기</td><td>1단 → <span class="ds-code">1024px</span> 이상 2단</td><td>왼쪽 입력, 오른쪽 결과</td></tr>
+        <tr><td>"먼저 읽어보세요" 글</td><td>2단 → <span class="ds-code">1024px</span> 이상 4단</td><td>카드 간격 가로 16 · 세로 24px</td></tr>
+        <tr><td>블로그 "모든 글"</td><td>1단 → <span class="ds-code">640px</span> 이상 2단</td><td>카드 간격 가로 24 · 세로 40px</td></tr>
+        <tr><td>블로그 추천 글</td><td>세로 나열 → <span class="ds-code">640px</span> 이상 가로 넘김</td><td>카드 너비 62%, ‹ › 버튼으로 이동</td></tr>
+        <tr><td>폼 구역 간격</td><td class="ds-code">28px</td><td>구역 위 2px 먹색 선 + 12px 여백</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. 그림 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">7. 그림·사진</h2>
+    <p class="ds-desc">글 그림은 항상 16:9 (1280×720). 따뜻한 미색·연초록 톤의 일상 장면(산책길, 식탁, 자전거, 벤치, 일기)을 쓰고, 노인·요양·병원 이미지는 쓰지 않습니다.
+      파일은 <span class="ds-code">assets/thumbs/{글 주소}.jpg</span> 이름으로 넣으면 바로 표시됩니다.
+      그림이 아직 없으면 Placeholder 색 칸에 원고의 '이미지 글자'(예: 53세)를 보여줍니다.</p>
+    <div class="mt-4 ds-scroll">
+      <table class="ds-table" id="image-table"><tr><th>파일</th><th>글 · 그릴 장면</th></tr></table>
+    </div>
+  </section>
+
+  <!-- 8. Lovable 문서와 다른 점 -->
+  <section class="ds-section">
+    <h2 class="ds-h2">8. 이전 문서(Lovable)와 달라진 점</h2>
+    <p class="ds-desc">Lovable에서 만든 디자인 시스템 문서의 원칙과 색 이름은 그대로 가져왔고, 실제 화면과 다른 값은 화면 기준으로 고쳤습니다.</p>
+    <div class="mt-4 ds-scroll">
+      <table class="ds-table">
+        <tr><th>항목</th><th>이전 문서</th><th>실제 화면 (이 문서)</th></tr>
+        <tr><td>페이지 제목</td><td>32px / 800</td><td>24px → 30px / 700</td></tr>
+        <tr><td>섹션 제목</td><td>20px / 800</td><td>20 → 24px / 700, 폼 구역 제목은 14px / 700</td></tr>
+        <tr><td>본문</td><td>15px</td><td>16px (보조 14px)</td></tr>
+        <tr><td>결과 숫자</td><td>26px / 800, 테두리 카드</td><td>요약 상자: 24 → 30px / 800 · 18px / 700, 바탕색 상자 (테두리 없음)</td></tr>
+        <tr><td>결과 항목</td><td>결과 카드</td><td>한 줄씩 나열하는 제안 목록 (아래 선 구분)</td></tr>
+        <tr><td>버튼 모서리</td><td>10px</td><td>주요·보조 버튼 12px, 빠른 더하기 10px, 이동 버튼은 알약형</td></tr>
+        <tr><td>상태 배지 (알약형)</td><td>있음</td><td>화면에서 쓰지 않음. 상태는 결과 상자 색과 제목("충분해요 😊" / "조금 부족해요 🙂")으로 표시</td></tr>
+        <tr><td>Accent (연초록)</td><td>포인트 배경</td><td>토큰만 있고 화면에서 쓰지 않음. 연초록은 입력칸 선택 테두리(Ring)와 Enough 계열로 표현</td></tr>
+        <tr><td>글 목록</td><td>PC 3단</td><td>"모든 글" 2단, "먼저 읽어보세요" 4단</td></tr>
+        <tr><td>로고</td><td>고리 + 텍스트</td><td>공식 로고 SVG (<span class="ds-code">assets/logo.svg</span>)로 통일, 내비게이션·푸터 포함</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer class="mt-16 border-t border-border pt-5 text-xs text-muted-foreground">리메이트 ReMate · retire-mates.com — 이 문서의 색·글꼴·간격은 <span class="ds-code">style.css</span>를 그대로 불러와 그립니다. (2026. 11)</footer>
+</div>
+
+<script src="/posts.js"></script>
+<script src="/site.js"></script>
+<script>
+// 색 견본: 값은 style.css의 :root에서 직접 읽어옵니다.
+const COLOR_GROUPS = [
+  ['기본 색', [
+    ['--background', 'Background', '화면 바탕 (따뜻한 미색)'],
+    ['--foreground', 'Foreground', '기본 글자 (먹색)'],
+    ['--card', 'Card', '카드·입력 상자 바탕 (흰색)'],
+    ['--muted-foreground', 'Muted Foreground', '보조 글자 (회색)'],
+    ['--border', 'Border', '테두리·구분선'],
+    ['--input', 'Input', '입력 상자 테두리'],
+    ['--surface', 'Surface', '푸터·출처 상자'],
+    ['--field', 'Field', '숫자 입력 영역'],
+    ['--placeholder', 'Placeholder', '그림 자리'],
+  ]],
+  ['버튼·강조', [
+    ['--primary', 'Primary', '주요 버튼 (먹색)'],
+    ['--primary-foreground', 'Primary Foreground', '주요 버튼 글자'],
+    ['--secondary', 'Secondary', '보조 바탕·태그·큰 결과 상자'],
+    ['--ring', 'Ring', '입력 선택 테두리 (연초록)'],
+  ]],
+  ['의미 색 (결과)', [
+    ['--enough', 'Enough', '충분·여유 (초록)'],
+    ['--enough-soft', 'Enough Soft', '필요 자산·여유 상자 바탕'],
+    ['--short', 'Short', '부족·줄여야 함 (황토, 빨강 아님)'],
+    ['--short-soft', 'Short Soft', '부족 상자·팁 상자 바탕'],
+    ['--info', 'Info', '늘려야 함·외부 링크 (차분한 파랑)'],
+  ]],
+];
+const root = getComputedStyle(document.documentElement);
+document.getElementById('swatches').innerHTML = COLOR_GROUPS.map(([title, items]) => `
+  <h3 class="ds-h3">${title}</h3>
+  <div class="ds-grid">${items.map(([token, name, role]) => `
+    <div class="ds-swatch"><div class="ds-chip" style="background:var(${token})"></div>
+      <div class="ds-meta"><b>${name}</b><span>${role}</span><span class="ds-code">${token}<br>${root.getPropertyValue(token).trim()}</span></div></div>`).join('')}
+  </div>`).join('');
+
+// 반전 로고 (SVG를 직접 넣어야 글자색을 따라감)
+fetch('/assets/logo.svg').then((r) => r.text()).then((svg) => {
+  document.getElementById('logo-inverse').innerHTML = svg.replace('<svg ', '<svg style="height:40px;width:auto;display:block" ');
+}).catch(() => {});
+
+// 실제 글 카드 컴포넌트
+document.getElementById('cards-md').innerHTML = [getPost('retirement-age-53'), getPost('retirement-living-cost')].map((p) => PostCard(p)).join('');
+document.getElementById('cards-row').innerHTML = [getPost('retirement-living-cost'), getPost('inflation-retirement')].map((p) => PostCard(p, { size: 'row' })).join('');
+
+// 이미지 파일 목록 (site.js의 글 데이터 기준)
+document.getElementById('image-table').innerHTML += POSTS.map((p) =>
+  `<tr><td class="ds-code">${esc(p.image)}</td><td>${esc(p.title)}<br><span class="text-xs text-muted-foreground">${esc(p.thumbScene || '')}${p.thumbText ? ' · 글자: ' + esc(p.thumbText) : ''}</span></td></tr>`).join('');
+</script>
+</body>
+</html>

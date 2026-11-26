@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>리메이트</title>
+<meta name="robots" content="noindex">
+<!-- 예전 주소(post.html?slug=…)로 들어오면 새 주소(/blog/{slug}/)로 보냅니다. -->
+<script>
+const slug = new URLSearchParams(location.search).get('slug');
+location.replace(slug && /^[a-z0-9-]+$/.test(slug) ? '/blog/' + slug + '/' : '/blog/');
+</script>
+</head>
+<body><a href="/blog/">블로그로 이동</a></body>
+</html>

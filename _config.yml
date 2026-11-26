@@ -1,0 +1,5 @@
+# GitHub Pages 설정: 원고와 빌드 도구는 사이트에 올리지 않아요.
+exclude:
+  - content
+  - tools
+  - README.md
